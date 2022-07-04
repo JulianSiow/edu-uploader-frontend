@@ -24,7 +24,7 @@ export default defineComponent({
           var fileLink = document.createElement("a");
 
           fileLink.href = fileURL;
-          fileLink.setAttribute("download", props.fileName);
+          fileLink.setAttribute("download", props.fileName as string);
           document.body.appendChild(fileLink);
 
           fileLink.click();
