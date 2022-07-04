@@ -1,8 +1,17 @@
 # edu-uploader-frontend
 
+## Introduction
+
+This is the front end for an interview task provided by [EDU](https://medical.edu.mt/).  This front end is built to consume an API that can be found [here](https://github.com/JulianSiow/edu-uploader-backend).
+
 ## Project setup
 ```
 npm install
+```
+
+add a .env file in the project root, with the following variable: 
+```
+VUE_APP_API_PORT=http://localhost:8080
 ```
 
 ### Compiles and hot-reloads for development
