@@ -23,4 +23,14 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+progress::-moz-progress-bar {
+  background: goldenrod !important;
+}
+progress::-webkit-progress-value {
+  background: goldenrod !important;
+}
+progress {
+  color: goldenrod !important;
+}
+</style>

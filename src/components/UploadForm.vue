@@ -1,15 +1,18 @@
 <template>
   <div>
-    <label
-      >Upload your file:
-      <input type="file" @change="fileSelected($event)" />
-    </label>
-    <button type="submit" @click="submitFile">Submit</button>
-    <UploadAlertVue
-      v-if="showAlert"
-      :uploadPercent="uploadPercent"
-      :uploadFailed="uploadFailed"
-    />
+    <div v-if="!showAlert">
+      <label>
+        <input type="file" @change="fileSelected($event)" />
+      </label>
+      <button type="submit" @click="submitFile">Submit</button>
+    </div>
+    <div class="alert-container" v-if="showAlert">
+      <UploadAlertVue
+        :uploadPercent="uploadPercent"
+        :uploadFailed="uploadFailed"
+      />
+      <button @click="reset">Upload another file</button>
+    </div>
   </div>
 </template>
 
@@ -36,13 +39,20 @@ export default {
       }
     };
 
+    const reset = () => {
+      file.value = null;
+      uploadPercent.value = 0;
+      uploadFailed.value = false;
+      showAlert.value = false;
+    };
+
     const submitFile = () => {
       if (file.value) {
         showAlert.value = true;
         let formData = new FormData();
         formData.append("file", file.value);
         axios
-          .post("http://localhost:8080/upload", formData, {
+          .post(`${process.env.VUE_APP_API_PORT}/upload`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -68,6 +78,7 @@ export default {
       uploadFailed,
       showAlert,
       fileSelected,
+      reset,
       submitFile,
     };
   },

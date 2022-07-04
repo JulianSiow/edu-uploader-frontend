@@ -1,9 +1,11 @@
 <template>
-  <nav>
-    <router-link to="/">Upload</router-link> |
-    <router-link to="/files">Files</router-link>
-  </nav>
-  <router-view />
+  <div>
+    <nav>
+      <router-link to="/">Upload</router-link> |
+      <router-link to="/files">Files</router-link>
+    </nav>
+    <router-view />
+  </div>
 </template>
 
 <style>
@@ -25,6 +27,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: goldenrod;
 }
 </style>

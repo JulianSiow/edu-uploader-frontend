@@ -1,9 +1,12 @@
 <template>
   <div>
     <h1>Files</h1>
-    <ul>
+    <ul class="file-list">
       <FileItem v-for="file in files" :key="file" :fileName="file" />
     </ul>
+    <h2 v-if="files && files.length < 1">
+      There seem to be no files here! Please upload a file
+    </h2>
   </div>
 </template>
 
@@ -22,7 +25,7 @@ export default {
 
     const getFiles = () => {
       axios
-        .get("http://localhost:8080/files")
+        .get(`${process.env.VUE_APP_API_PORT}/files`)
         .then((res) => {
           files.value = res.data.data;
         })
@@ -43,4 +46,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.file-list {
+  list-style-type: none;
+  margin: 0 auto;
+  max-width: 50%;
+  padding-left: 0px;
+}
+.file:not(:first-child) {
+  border-top: 1px solid #2c3e50;
+}
+</style>

@@ -1,11 +1,11 @@
 <template>
-  <li>
+  <li class="file">
     {{ fileName }}
     <button @click="downloadFile">Download File</button>
   </li>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ export default defineComponent({
   setup(props) {
     const downloadFile = () => {
       axios
-        .get(`http://localhost:8080/files/${props.fileName}`)
+        .get(`${process.env.VUE_APP_API_PORT}/files/${props.fileName}`)
         .then((res) => {
           console.log(res);
           var fileURL = window.URL.createObjectURL(new Blob([res.data]));
@@ -41,4 +41,10 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.file {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+</style>
