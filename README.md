@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the front end for an interview task provided by [EDU](https://medical.edu.mt/).  This front end is built to consume an API that can be found [here](https://github.com/JulianSiow/edu-uploader-backend).
+This is the front end for an interview task provided by [EDU](https://medical.edu.mt/).  This front end is built to consume an API that can be found [here](https://github.com/JulianSiow/edu-uploader-backend).  The docker image of this project can be found [here](https://hub.docker.com/r/jsiow/edu-uploader)
 
 ## Project setup
 ```
